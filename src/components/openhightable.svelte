@@ -19,9 +19,12 @@
   const openhighlist = subscribe(client, { query: OPENHIGHQUERY });
 </script>
 
-<main>
-  <p>Hello this is high table</p>
-  <DataTable>
+<!-- <main> -->
+
+  <div class= 'myclass'>
+
+    <p>Hello this is high table</p>
+    <DataTable>
     <Head>
       <Row>
         <Cell>InstrumentIdentifier</Cell>
@@ -34,21 +37,40 @@
     </Head>
     <Body>
       {#if $openhighlist.loading}
-        <Row><Cell>Waiting for stocks...</Cell></Row>
+      <Row><Cell>Waiting for stocks...</Cell></Row>
       {:else if $openhighlist.data}
-        {#each $openhighlist.data.openhigh as openhigh (openhigh.instrumentidentifier)}
-          <Row>
-            <Cell>{openhigh.instrumentidentifier}</Cell>
-            <Cell>{openhigh.open}</Cell>
-            <Cell>{openhigh.low}</Cell>
-            <Cell>{openhigh.lasttradeprice}</Cell>
-            <Cell>{openhigh.pricechange}</Cell>
+      {#each $openhighlist.data.openhigh as openhigh (openhigh.instrumentidentifier)}
+      <Row>
+        <Cell>{openhigh.instrumentidentifier}</Cell>
+        <Cell>{openhigh.open}</Cell>
+        <Cell>{openhigh.high}</Cell>
+        <Cell>{openhigh.lasttradeprice}</Cell>
+        <Cell>{openhigh.pricechange}</Cell>
             <Cell>{openhigh.pricechangepercentage}</Cell>
           </Row>
         {/each}
       {:else}
-        <Row><Cell>o authors found</Cell></Row>
+      <Row><Cell>o authors found</Cell></Row>
       {/if}
     </Body>
   </DataTable>
-</main>
+</div>
+<!-- </main> -->
+
+<style>
+  :global(body),
+  :global(html) {
+    height: auto;
+    width: 50%;
+    position: static;
+  }
+  
+
+  
+  :global(#smui-app) {
+    display: block;
+    height: auto;
+    overflow: auto;
+  }
+</style>
+

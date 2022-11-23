@@ -19,36 +19,55 @@
   const openlowlist = subscribe(client, { query: OPENLOWQUERY });
 </script>
 
-<main>
-  <p>Hello this is low table</p>
-  <DataTable>
-    <Head>
-      <Row>
-        <Cell>InstrumentIdentifier</Cell>
-        <Cell>Open</Cell>
-        <Cell>Low</Cell>
-        <Cell>LTP</Cell>
-        <Cell>Price Change</Cell>
-        <Cell>%Price Change</Cell>
-      </Row>
-    </Head>
-    <Body>
-      {#if $openlowlist.loading}
-      <Row><Cell>Waiting for stocks...</Cell></Row>
-      {:else if $openlowlist.data}
-      {#each $openlowlist.data.openlow as openlow (openlow.instrumentidentifier)}
-      <Row>
-        <Cell>{openlow.instrumentidentifier}</Cell>
-        <Cell>{openlow.open}</Cell>
-        <Cell>{openlow.low}</Cell>
-        <Cell>{openlow.lasttradeprice}</Cell>
-        <Cell>{openlow.pricechange}</Cell>
-        <Cell>{openlow.pricechangepercentage}</Cell>
-      </Row>
-      {/each}
-      {:else}
-      <Row><Cell>o authors found</Cell></Row>
-      {/if}
-    </Body>
-  </DataTable>
-</main>
+<!-- <main> -->
+  <div class= 'mytable'>
+
+    <DataTable class='table' stickyHeader table$aria-label="stocks list">
+      <Head class='head'>
+        <Row>
+          <Cell>InstrumentIdentifier</Cell>
+          <Cell>Open</Cell>
+          <Cell>Low</Cell>
+          <Cell>LTP</Cell>
+          <Cell>Price Change</Cell>
+          <Cell>%Price Change</Cell>
+        </Row>
+      </Head>
+      <Body>
+        {#if $openlowlist.loading}
+        <Row><Cell>Waiting for stocks...</Cell></Row>
+        {:else if $openlowlist.data}
+        {#each $openlowlist.data.openlow as openlow (openlow.instrumentidentifier)}
+        <Row>
+          <Cell>{openlow.instrumentidentifier}</Cell>
+            <Cell>{openlow.open}</Cell>
+            <Cell>{openlow.low}</Cell>
+            <Cell>{openlow.lasttradeprice}</Cell>
+            <Cell>{openlow.pricechange}</Cell>
+            <Cell>{openlow.pricechangepercentage}</Cell>
+          </Row>
+          {/each}
+          {:else}
+          <Row><Cell>o authors found</Cell></Row>
+          {/if}
+        </Body>
+      </DataTable>
+    </div>
+    <!-- </main> -->
+
+<style>
+  :global(body),
+  :global(html) {
+    height: auto;
+    width: 50%;
+    position: static;
+  }
+  
+
+  
+  :global(#smui-app) {
+    display: block;
+    height: auto;
+    overflow: auto;
+  }
+</style>

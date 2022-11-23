@@ -8,9 +8,11 @@
 </script>
 
 <main>
-  <Openhightable />
-  <Openlowtable />
+    <Openhightable />
+    <Openlowtable />
+
 </main>
 
-<style>
-</style>
+
+
+
