@@ -15,7 +15,7 @@ const getHeaders = () => {
 };
 const cache = new InMemoryCache();
 const wsLink = new WebSocketLink({
-  uri: "ws://open-skunk-43.hasura.app/v1/graphql",
+  uri: "wss://open-skunk-43.hasura.app/v1/graphql",
   options: {
     reconnect: true,
     lazy: true,
@@ -25,7 +25,7 @@ const wsLink = new WebSocketLink({
   },
 });
 const httpLink = new HttpLink({
-  uri: "http://localhost:8080/v1/graphql",
+  uri: "https://open-skunk-43.hasura.app/v1/graphql",
   headers: getHeaders(),
 });
 
