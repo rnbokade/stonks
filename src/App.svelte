@@ -13,6 +13,15 @@
 
 </main>
 
+<style>
+  main{
 
+    display: flex;
+  }
+
+  :global(.mytable){
+    margin:10px;
+  }
+</style>
 
 

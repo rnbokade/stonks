@@ -23,9 +23,8 @@
 
   <div class= 'myclass'>
 
-    <p>Hello this is high table</p>
-    <DataTable>
-    <Head>
+    <DataTable class='table'>
+    <Head class= 'head'>
       <Row>
         <Cell>InstrumentIdentifier</Cell>
         <Cell>Open</Cell>
@@ -65,6 +64,18 @@
     position: static;
   }
   
+  :global(.head) {
+    background-color: black;
+    color: aliceblue;
+    border: 1px solid white;
+
+  }
+
+  :global(.table) {
+    background-color:grey;
+    color: aliceblue;
+    border: 1px black;
+  }
 
   
   :global(#smui-app) {
