@@ -19,41 +19,38 @@
   const openlowlist = subscribe(client, { query: OPENLOWQUERY });
 </script>
 
-<!-- <main> -->
-  <div class= 'mytable'>
-
-    <DataTable class='table' stickyHeader table$aria-label="stocks list">
-      <Head class='head'>
-        <Row>
-          <Cell>InstrumentIdentifier</Cell>
-          <Cell>Open</Cell>
-          <Cell>Low</Cell>
-          <Cell>LTP</Cell>
-          <Cell>Price Change</Cell>
-          <Cell>%Price Change</Cell>
-        </Row>
-      </Head>
-      <Body>
-        {#if $openlowlist.loading}
+<main>
+  <DataTable class='table' stickyHeader table$aria-label="stocks list">
+    <Head class='head'>
+      <Row>
+        <Cell>InstrumentIdentifier</Cell>
+        <Cell>Open</Cell>
+        <Cell>Low</Cell>
+        <Cell>LTP</Cell>
+        <Cell>Price Change</Cell>
+        <Cell>%Price Change</Cell>
+      </Row>
+    </Head>
+    <Body>
+      {#if $openlowlist.loading}
         <Row><Cell>Waiting for stocks...</Cell></Row>
-        {:else if $openlowlist.data}
+      {:else if $openlowlist.data}
         {#each $openlowlist.data.openlow as openlow (openlow.instrumentidentifier)}
-        <Row>
-          <Cell>{openlow.instrumentidentifier}</Cell>
+          <Row>
+            <Cell>{openlow.instrumentidentifier}</Cell>
             <Cell>{openlow.open}</Cell>
             <Cell>{openlow.low}</Cell>
             <Cell>{openlow.lasttradeprice}</Cell>
             <Cell>{openlow.pricechange}</Cell>
             <Cell>{openlow.pricechangepercentage}</Cell>
           </Row>
-          {/each}
-          {:else}
-          <Row><Cell>o authors found</Cell></Row>
-          {/if}
-        </Body>
-      </DataTable>
-    </div>
-    <!-- </main> -->
+        {/each}
+      {:else}
+        <Row><Cell>o authors found</Cell></Row>
+      {/if}
+    </Body>
+  </DataTable>
+</main>
 
 <style>
   :global(body),
@@ -61,10 +58,22 @@
     height: auto;
     width: 50%;
     position: static;
+    display: flex;
   }
   
-
   
+  :global(.head) {
+    background-color: black;
+    color: aliceblue;
+    border: 1px black;
+  }
+
+  :global(.table) {
+    background-color:grey;
+    color: aliceblue;
+    border: 1px black;
+  }
+
   :global(#smui-app) {
     display: block;
     height: auto;
