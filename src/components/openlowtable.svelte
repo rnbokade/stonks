@@ -19,9 +19,11 @@
   const openlowlist = subscribe(client, { query: OPENLOWQUERY });
 </script>
 
-<main>
-  <DataTable class='table' stickyHeader table$aria-label="stocks list">
-    <Head class='head'>
+<!-- <main> -->
+  <div class='table1'>
+
+    <DataTable stickyHeader table$aria-label="stocks list">
+      <Head class='head'>
       <Row>
         <Cell>InstrumentIdentifier</Cell>
         <Cell>Open</Cell>
@@ -31,7 +33,7 @@
         <Cell>%Price Change</Cell>
       </Row>
     </Head>
-    <Body>
+    <Body >
       {#if $openlowlist.loading}
         <Row><Cell>Waiting for stocks...</Cell></Row>
       {:else if $openlowlist.data}
@@ -44,21 +46,22 @@
             <Cell>{openlow.pricechange}</Cell>
             <Cell>{openlow.pricechangepercentage}</Cell>
           </Row>
-        {/each}
-      {:else}
-        <Row><Cell>o authors found</Cell></Row>
-      {/if}
-    </Body>
-  </DataTable>
-</main>
-
-<style>
+          {/each}
+          {:else}
+          <Row><Cell>o authors found</Cell></Row>
+          {/if}
+        </Body>
+      </DataTable>
+    </div>
+    <!-- </main> -->
+    
+    <style>
   :global(body),
   :global(html) {
     height: auto;
-    width: 50%;
+    width: auto;
     position: static;
-    display: flex;
+    /* display: flex; */
   }
   
   
@@ -68,11 +71,7 @@
     border: 1px black;
   }
 
-  :global(.table) {
-    background-color:grey;
-    color: aliceblue;
-    border: 1px black;
-  }
+  
 
   :global(#smui-app) {
     display: block;

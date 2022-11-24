@@ -21,9 +21,9 @@
 
 <!-- <main> -->
 
-  <div class= 'myclass'>
+  <div class='table2'>
 
-    <DataTable class='table'>
+    <DataTable >
     <Head class= 'head'>
       <Row>
         <Cell>InstrumentIdentifier</Cell>
@@ -34,7 +34,7 @@
         <Cell>%Price Change</Cell>
       </Row>
     </Head>
-    <Body>
+    <Body >
       {#if $openhighlist.loading}
       <Row><Cell>Waiting for stocks...</Cell></Row>
       {:else if $openhighlist.data}
@@ -60,7 +60,8 @@
   :global(body),
   :global(html) {
     height: auto;
-    width: 50%;
+    /* width: 50%; */
+    width: auto;
     position: static;
   }
   
@@ -71,12 +72,7 @@
 
   }
 
-  :global(.table) {
-    background-color:grey;
-    color: aliceblue;
-    border: 1px black;
-  }
-
+  
   
   :global(#smui-app) {
     display: block;
